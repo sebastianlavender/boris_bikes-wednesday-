@@ -4,7 +4,7 @@ require 'bike'
 describe DockingStation do
   it {is_expected.to respond_to :release_bike}
   it {is_expected.to respond_to(:dock).with(1).argument}
-  it {is_expected.to respond_to :bike}
+  it {is_expected.to respond_to :bikes}
 
   describe "#release_bike" do
 
@@ -24,13 +24,12 @@ describe DockingStation do
     it "should dock a bike" do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bike).to eq bike
+      expect(subject.bikes[0]).to eq bike
     end
 
     it "should give error when more than one bike is tried to be docked" do
-      bike, bike2 = Bike.new
-      subject.dock(bike)
-      expect {subject.dock(bike2)}.to raise_error "Docking station full"
+      20.times {subject.dock(Bike.new) }
+      expect {subject.dock(Bike.new)}.to raise_error "Docking station full"
     end
   end
 
