@@ -2,9 +2,9 @@ require_relative 'bike'
 
 class DockingStation
   attr_reader :bike
-  
+
   def initialize
-    @bike = []
+    @bike = nil
   end
 
   def release_bike
@@ -12,6 +12,6 @@ class DockingStation
   end
 
   def dock(bike)
-    @bike << bike
+    @bike = bike
   end
 end
