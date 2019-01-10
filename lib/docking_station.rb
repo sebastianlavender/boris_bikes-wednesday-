@@ -12,8 +12,9 @@ class DockingStation
   end
 
   def release_bike
-    fail("No bikes available") unless empty?
-    bikes.pop
+      fail("No bikes available") unless empty?
+      fail ('No working bikes available') unless working?
+      bikes.pop
   end
 
   def dock(bike)
@@ -32,6 +33,11 @@ class DockingStation
   def empty?
     bikes.length >= 1
   end
+
+  def working?
+    bikes.last.working
+  end
+  
 end
 
 # DEFAULT_CAPACITY
