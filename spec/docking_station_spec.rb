@@ -1,5 +1,6 @@
 require 'docking_station'
 require 'bike'
+require 'van'
 
 describe DockingStation do
   it {is_expected.to respond_to :release_bike}
@@ -45,5 +46,6 @@ describe DockingStation do
     test = DockingStation.new(30)
     expect(test.capacity).to eq 30
   end
+
 
 end
