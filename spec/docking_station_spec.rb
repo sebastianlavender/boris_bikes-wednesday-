@@ -4,7 +4,7 @@ require 'bike'
 describe DockingStation do
   it {is_expected.to respond_to :release_bike}
   it {is_expected.to respond_to(:dock).with(1).argument}
-  it {is_expected.to respond_to :bikes}
+  it {is_expected.to respond_to :capacity}
 
   describe "#release_bike" do
 
@@ -24,7 +24,7 @@ describe DockingStation do
     it "should dock a bike" do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bikes[0]).to eq bike
+      expect(subject.release_bike).to eq bike
     end
 
     it "should give error when more than one bike is tried to be docked" do
@@ -33,6 +33,9 @@ describe DockingStation do
     end
   end
 
-
+  it "should allow you to change the capacity of the docking station" do
+    test = DockingStation.new(30)
+    expect(test.capacity).to eq 30
+  end
 
 end
